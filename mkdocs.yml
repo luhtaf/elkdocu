@@ -1,7 +1,7 @@
 site_name: Tahapan Instalasi ELK
 
 nav:
-    - Home: 'index.md'
+    - Home: 'home.md'
     - Pendahuluan: 'pendahuluan.md'
     - Instalasi:
         - 'Elasticsearch': 'elasticsearch.md'
