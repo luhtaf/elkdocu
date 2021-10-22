@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+mkdocs = "~=1.1.2"
+mkdocs-rtd-dropdown = "*"
+mkdocs-material = "*"
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+mkdocs = "mkdocs serve"
+mkdocs_build = "mkdocs build"
