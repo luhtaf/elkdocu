@@ -29,4 +29,4 @@ Perintah berikut ini untuk mengecek status apakah logstash berjalan atau tidak.
 
 
 ## Konfigurasi
-Konfigurasi logstash akan dijelaskan pada bagian [operasi](./operasi)
+Konfigurasi logstash akan dijelaskan pada bagian [operasi](./conf_logstash)

@@ -1,69 +1,189 @@
-# Elasticsearch
-Pada pelatihan kali ini, akan digunakan elasticsearch versi 7.15.1 pada sistem operasi Ubuntu 18.04. Goalsnya adalah dapat mengakses elasticsearch melalui website host.
+# Operasional Logstash
 
-## Download dan Install
-Untuk mendownload elasticsearch, ketikkan command:
-    
-    wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.1-amd64.deb
+## Mengatur Filter Untuk Beats
+Pertama-tama dalam konfigurasi logstash cek file `/etc/logstash/pipelines.yml`
 
-Setelah mendownload elasticsearch, dapat dilakukan command berikut untuk menginstall elasticsearch:
+    - pipeline.id: main
+      path.config: "/etc/logstash/conf.d/*.conf"
 
-    sudo dpkg -i elasticsearch-7.15.1-amd64.deb
+Konfigurasi di atas menunjukkan bahwa logstash akan membaca semua file yang berada di folder `/etc/logstash/conf.d/` dengan ekstensi `.conf` yang dikenal oleh logstash dengan id pipeline `main`. kita bisa menspesifikkan file konfigurasi yang akan dibaca oleh logstash dengan mengubah `*.conf` menjadi file spesifik.
 
-Kemudian, untuk membuat elasticsearch otomatis dijalankan meskipun server setelah direstart, gunakan command:
+kemudian, kita akan melakukan konfigurasi `input` `filter` dan `output` untuk filebeats di logstash.
 
-    sudo systemctl enable elasticsearch
+pada `input` akan diberikan konfigurasi untuk membuka port 5044, yang menandakan pada konfigurasi ini hanya berlaku pada data yang melalui port 5044, dengan command:
 
-Perintah berikut ini untuk mengecek status apakah elasticsearch berjalan atau tidak.
-    
-    sudo systemctl status elasticsearch
-
-Dan jalankan perintah berikut untuk menjalankan service elasticsearch.
-
-    sudo systemctl start elasticsearch
-
-(Optional) Perintah berikut digunakan untuk menghentikan service elasticsearch.
-
-    sudo systemctl stop elasticsearch
-
-Setelah menjalankan service elasticsearch, kita akan memastikan kembali apakah elasticsearchnya berjalan dengan semestinya, maka ketikkan command berikut
-
-    curl localhost:9200
-
-Apabila command berhasil, maka akan memberikan output
-
+    input
     {
-    "name" : "ubuntu",
-    "cluster_name" : "elasticsearch",
-    "cluster_uuid" : "z9mqP82QSuCrhQmhoyDcTw",
-    "version" : {
-        "number" : "7.15.1",
-        "build_flavor" : "default",
-        "build_type" : "deb",
-        "build_hash" : "83c34f456ae29d60e94d886e455e6a3409bba9ed",
-        "build_date" : "2021-10-07T21:56:19.031608185Z",
-        "build_snapshot" : false,
-        "lucene_version" : "8.9.0",
-        "minimum_wire_compatibility_version" : "6.8.0",
-        "minimum_index_compatibility_version" : "6.0.0-beta1"
-    },
-    "tagline" : "You Know, for Search"
+        beats
+        {
+            port =>5044
+        }
+    }
+
+pada `filter` kita bisa melakukan berbagai macam hal, pastikan semua konfigurasi yang berkaitan dengan `filter` dituliskan seperti konfigurasi berikut:
+
+    filter
+    {
+        #konfigurasi filter disini
     }
 
 
+seperti menspesifikkan data yang akan diambil sebagai sumber utama:
 
-## Konfigurasi
-Setelah mendownload dan menginstall elasticsearch, perlu dilakukan beberapa konfigurasi tambahan Untuk bisa mengakses elasticsearch, perlu dilakukan konfigurasi IP pada elasticsearch. Konfigurasi dilakukan dengan menambahkan command pada file `/etc/elasticsearch/elasticsearch.yml`:
+        json
+        {
+            source => "message"
+        }
 
-    network.host: 0.0.0.0
-    transport.host: 127.0.0.1
-    transport.port: 9300
-    http.port: 9200
+_menggenerate_ hash berdasarkan field tertentu dari sumber log:
 
-    #note: `0.0.0.0` dapat diganti dengan ip address dari sistem operasi ubuntu anda untuk menspesifikkan ip dari servis elasticsearch anda.
+        fingerprint {
+            target => "generated_id"
+            method => "SHA1"
+            source => "message"
+            concatenate_sources => "true"	
+        }
 
-(Optional) Apabila anda tidak dapat mengakses elasticsearch melalui hostnya setelah melakukan konfigurasi, mungkin ada rules dari firewall ubuntu yang menghalangi host untuk mengakses elasticsearch, kita dapat mengosongkan rules iptables dengan command dibawah.
+mengatur timestamp yang akan digunakan:
 
-    iptables -F
+        date {
+            match => ["timestamp", "yyyy-MM-dd HH:mm:ss"]
+        }
 
-tapi INGAT, command ini hanya dilakukan di sini, terutama jika anda belum mendalami iptables. Dan jangan jalankan command diatas ketika anda menginstall di server yang sebenarnya karena command diatas akan mengosongkan `RULES` dari iptables pada OS anda
+kita juga bisa memetakan asal negara, kota, bahkan instansi dengan menggunakan database yang sudah disediakan oleh elasticsearch:
+
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_Org"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-ASN.mmdb"
+        }
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_Country"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-Country.mmdb"
+            }
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_City"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-City.mmdb"
+            }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_Org"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-ASN.mmdb"
+        }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_Country"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-Country.mmdb"
+            }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_City"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-City.mmdb"
+            }
+
+Pada bagian `output`, kita bisa memetakan output index sesuai dari source log yang ada:
+
+        output 
+        {
+            if[fields][source] == "apache"
+            {
+                elasticsearch 
+                {
+                    hosts => ["localhost:9200"]
+                    document_id => "%{[generated_id]}"
+                    index => "apache-%{+yyyy.MM.dd}"
+                }
+            }
+
+            if[fields][site] == "suricata"
+            {
+                elasticsearch 
+                {
+                    hosts => ["localhost:9200"]
+                    document_id => "%{[generated_id]}"
+                    index => "suricata-%{+yyyy.MM.dd}"
+                }
+            }
+
+        }
+
+Bagian Konfigurasi full, dapat dilihat sebagai berikut:
+
+    input {
+    beats {
+    port => 5044
+    }
+    }
+
+    filter {
+        json
+        {
+            source => "message"
+        }
+        fingerprint {
+            target => "generated_id"
+            method => "SHA1"
+            source => "message"
+            concatenate_sources => "true"	
+        }
+        date {
+            match => ["timestamp", "yyyy-MM-dd HH:mm:ss"]
+        }
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_Org"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-ASN.mmdb"
+        }
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_Country"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-Country.mmdb"
+            }
+        geoip {
+            source => "[src_ip]"
+            target => "SourceIP_City"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-City.mmdb"
+            }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_Org"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-ASN.mmdb"
+        }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_Country"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-Country.mmdb"
+            }
+        geoip {
+            source => "[dest_ip]"
+            target => "DestIP_City"
+            database => "/usr/share/elasticsearch/modules/ingest-geoip/GeoLite2-City.mmdb"
+            }
+        }
+
+    output {
+
+    if[fields][site] == "1"
+    {
+    elasticsearch {
+        hosts => ["localhost:9200"]
+        document_id => "%{[generated_id]}"
+        index => "sensor-site1-%{+yyyy.MM.dd}"
+        
+    }
+    }
+
+    if[fields][site] == "2"
+    {
+    elasticsearch {
+        hosts => ["localhost:9200"]
+        document_id => "%{[generated_id]}"
+        index => "sensor-site2-%{+yyyy.MM.dd}"
+        
+    }
+    }
+
+    }
+
