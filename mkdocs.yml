@@ -7,4 +7,5 @@ nav:
         - 'Elasticsearch': 'elasticsearch.md'
         - 'Logstash': 'logstash.md'
         - 'Kibana': 'kibana.md'
-    - Operasi: 'operasi.md'
+    - Operasi: 
+        - Konfigurasi Elasticsearch: 'operasi.md'
