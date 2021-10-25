@@ -1,11 +1,13 @@
 site_name: Tahapan Instalasi ELK
 
 nav:
-    - 'index.md'
+    - Home: 'index.md'
     - Pendahuluan: 'pendahuluan.md'
     - Instalasi:
         - 'Elasticsearch': 'elasticsearch.md'
         - 'Logstash': 'logstash.md'
         - 'Kibana': 'kibana.md'
     - Operasi: 
-        - Konfigurasi Elasticsearch: 'operasi.md'
+        - Konfigurasi Elasticsearch: 'conf_elastic.md'
+        - Konfigurasi Logstash: 'conf_logstash.md'
+        - Konfigurasi Kibana: 'conf_kibana.md'
