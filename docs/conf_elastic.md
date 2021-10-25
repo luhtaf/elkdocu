@@ -8,7 +8,7 @@ Selanjutnya, akan di enable bagian security dari elasticsearch agar diperlukan o
 
 Setelah melakukan enable pada security elasticsearch, kemudian akan dibuat user untuk bisa login ke elasticsearch. Ada 2 cara untuk pembuatan user
 
-1. Menggunakan elasticsearch-setup-passwords
+* Menggunakan elasticsearch-setup-passwords
 
     Cara pertama dapat dilakukan dengan mengetikkan command dibawah, kemudian berikan password untuk masing-masing user.
 
@@ -16,7 +16,7 @@ Setelah melakukan enable pada security elasticsearch, kemudian akan dibuat user 
     
     Cara ini akan menggenerate semua user untuk masing-masing role yang tersedia
 
-2. Menggunakan elasticsearch-users
+* Menggunakan elasticsearch-users
 
     Cara kedua dilakukan dengan menambah manual user yang akan ditambahkan, misalnya dengan command dibawah kita akan menambahkan user dengan username `admin`. Setelahnya sistem akan meminta password yang diinginkan.
 
