@@ -1,6 +1,7 @@
 site_name: Tahapan Instalasi ELK
 
 nav:
+    - Index: 'index.md'
     - Home: 'home.md'
     - Pendahuluan: 'pendahuluan.md'
     - Instalasi:
