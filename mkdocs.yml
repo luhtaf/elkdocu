@@ -4,10 +4,16 @@ nav:
     - Home: 'index.md'
     - Pendahuluan: 'pendahuluan.md'
     - Instalasi:
-        - 'Elasticsearch': 'elasticsearch.md'
-        - 'Logstash': 'logstash.md'
-        - 'Kibana': 'kibana.md'
+        - Elasticsearch: 'elasticsearch.md'
+        - Logstash: 'logstash.md'
+        - Kibana: 'kibana.md'
     - Operasi: 
         - Konfigurasi Elasticsearch: 'conf_elastic.md'
         - Konfigurasi Logstash: 'conf_logstash.md'
         - Konfigurasi Kibana: 'conf_kibana.md'
+        - Instalasi Filebeat: 'filebeat.md'
+        - Analisis Log 1: 'log1.md'
+    - Pengayaan:
+        - Mengakses Elasticsearch: 'rich_elastic.md'
+        - Elasticsearch Sebagai Secondary Database: 'secondary_db.md'
+        - ELK Nginx Reverse Proxy: 'reverse_proxy.md'
