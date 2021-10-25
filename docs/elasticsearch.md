@@ -60,8 +60,6 @@ Setelah mendownload dan menginstall elasticsearch, perlu dilakukan beberapa konf
     transport.port: 9300
     http.port: 9200
 
-    #note: `0.0.0.0` dapat diganti dengan ip address dari sistem operasi ubuntu anda untuk menspesifikkan ip dari servis elasticsearch anda.
-
 (Optional) Apabila anda tidak dapat mengakses elasticsearch melalui hostnya setelah melakukan konfigurasi, mungkin ada rules dari firewall ubuntu yang menghalangi host untuk mengakses elasticsearch, kita dapat mengosongkan rules iptables dengan command dibawah.
 
     iptables -F
