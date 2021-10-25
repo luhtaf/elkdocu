@@ -28,17 +28,10 @@ Dan jalankan perintah berikut untuk menjalankan service kibana.
 
 
 ## Konfigurasi
-Setelah mendownload dan menginstall elasticsearch, perlu dilakukan beberapa konfigurasi tambahan Untuk bisa mengakses elasticsearch, perlu dilakukan konfigurasi IP pada elasticsearch. Konfigurasi dilakukan dengan menambahkan command pada file `/etc/elasticsearch/elasticsearch.yml`:
+Setelah mendownload dan menginstall kibana, perlu dilakukan beberapa konfigurasi tambahan Untuk bisa mengakses kibana melalui browser host. Konfigurasi dilakukan dengan mengubah command pada file `/etc/kibana/kibana.yml` dari
 
-    network.host: 0.0.0.0
-    transport.host: 127.0.0.1
-    transport.port: 9300
-    http.port: 9200
+    #server.host: "localhost"
 
-    #note: `0.0.0.0` dapat diganti dengan ip address dari sistem operasi ubuntu anda untuk menspesifikkan ip dari servis elasticsearch anda.
+diubah menjadi
 
-(Optional) Apabila anda tidak dapat mengakses elasticsearch melalui hostnya setelah melakukan konfigurasi, mungkin ada rules dari firewall ubuntu yang menghalangi host untuk mengakses elasticsearch, kita dapat mengosongkan rules iptables dengan command dibawah.
-
-    iptables -F
-
-tapi INGAT, command ini hanya dilakukan di sini, terutama jika anda belum mendalami iptables. Dan jangan jalankan command diatas ketika anda menginstall di server yang sebenarnya karena command diatas akan mengosongkan `RULES` dari iptables pada OS anda
+    server.host: "0.0.0.0"
