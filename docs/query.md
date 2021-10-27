@@ -4,7 +4,11 @@ Selanjutnya masih akan digunakan Dev Tools untuk melakukan query lanjutan
 ## Basic Query
 Basic Query di elasticsearch menggunakan command `_search` seperti yang sudah dibahas pada [CRUD](../crud). Query ini adalah query dasar dari elastticsearch.
 
-    GET data-restaurant/_search?q=Mission
+    GET data-*/_search?q=Mission
+
+
+> ada berapa jumlah data yang dihasilkan dari query di atas?
+
 
 selain itu, kita bisa menspesifikkan field yang akan di query dengan menggunaka command dibawah.
 
@@ -13,7 +17,7 @@ selain itu, kita bisa menspesifikkan field yang akan di query dengan menggunaka 
     "from" : 0, "size" : 87,
     "query": {
         "query_string" : {
-            "query": "Our Mission",
+            "query": "Some Query",
             "fields": ["description","address"],
         }
     }
@@ -30,6 +34,32 @@ atau
         }
     }
     }
+
+Bisa juga dilakukan query terhadap suatu range pada field tertentu
+
+    GET data-user/_search
+    {
+    "query": {
+        "range": {
+        "address.coordinates.lng": {
+            "gte": 10
+        }
+        }  
+        }
+    }
+
+
+> lakukan query pada `data-user`, `data-restaurant`, `data-commerce`
+> pada data-restaurant:
+> - berapa jumlah data dengan query `Culvers` pada field description? - 85
+> - berapa restotan yang memasak makanan itali? - 35
+> - berapa restoran yang tutup di hari senin? - 527
+> pada data-commerce
+> - berapa jumlah barang yang dijual dengan harga lebih dari 60? - 371
+> - berapa jumlah barang yang dijual dengan harga kurang dari 10? - 112
+> - berapa jumlah barang yang dijual dengan rentang harga 10-70? - 618
+
+> hint: lihat auto complete dan [referensi](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)
 
 ## Term Query
 Term Query di elasticsearch melakukan query hanya pada nilai yang tepat
@@ -54,6 +84,8 @@ Term Query di elasticsearch melakukan query hanya pada nilai yang tepat
     }
     }
 
+> Berapa jumlah data dari masing-masing contoh di atas? - 0 dan 26
+> ada berapa restoran dengan tipe `Bakery`? - 29
 
 ## Fuzzy Query
 Fuzzy Query melakukan query tidak hanya pada nilai yang di query tapi juga mengquery nilai yang mirip
@@ -87,6 +119,8 @@ jika kita menggunakan parameter lanjutan dari fuzzy ini yaitu
     }
     }
 
+> Apa hasil fuzzy dari command diatas? - BC Grill
+
 ## Aggregations
 Aggregations di elasticsearch ini memiliki fungsi merangkum beberapa kondisi index pada elasticsearch seperti metric, statictic, dan analytic lainnya. Jika Elasticsearch dimanfaatkan sebagai database dalam suatu instansi pendidikan, fungsi agregasinya kita bisa mencari tahu :
 
@@ -103,7 +137,7 @@ Aggregations di elasticsearch sendiri dibagi menjadi 3 kategori:
 
 Disini akan dijelaskan hanya 2 teknik aggregations dasar, yaitu terms bucket aggregation dan metric aggregations (avg,min,max,sum). Untuk mempelajaari aggregations lebih lanjut dapat dilihat dari [link berikut](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)
 
-Pertama adalah terms bucket aggregations yang akan mengelompokkan data berdasarkan keyword dari suatu field, yang dapat dilihat dengan menggunakan command
+`Pertama` adalah terms bucket aggregations yang akan mengelompokkan data berdasarkan keyword dari suatu field, yang dapat dilihat dengan menggunakan command
 
     GET data-commerce/_search
     {
@@ -122,11 +156,12 @@ kedua adalah metric aggregations yang akan menghitung nilai rata-rata. Aggregati
     "size":10,
     "aggs": {
         "my-agg-name": {
-        "min": {
+        "stats": {
             "field": "price"  }
         }
     }
     }
+
 
 
 Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pada contoh dibawah, aggregations dilakukan pada field "material", namun hanya dilakukan pada dokumen yang field `price` ada di rentang 3-7.
@@ -147,3 +182,7 @@ Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pa
         }
     }
     }
+
+
+> Jelaskan hasil aggregations dari contoh pertama?
+> apa saja hasil statistik yang termasuk pada contoh ke-2?
