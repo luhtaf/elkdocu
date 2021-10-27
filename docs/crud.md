@@ -11,9 +11,13 @@ Elasticsearch sebagai database sudah memiliki API untuk mengakses database. API 
 | Timestamp | penunjuk waktu | `@timestamp` |
 
 ## Melihat database
-Perintah untuk melihat semua database yang tersedia 
+Perintah untuk melihat semua indeks yang tersedia 
 
     GET _cat/indices
+
+
+> jalankan perintah untuk melihat indeks yang ada di elasticsearch anda
+
 
 ## Membuat Index
 Untuk membuat index pada elasticsearch menggunakan method PUT seperti berikut
