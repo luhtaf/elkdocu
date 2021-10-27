@@ -40,4 +40,4 @@ Setelah melakukan enable pada security elasticsearch, kemudian akan dibuat user 
     | apm_user | beats_system | reporting_user |
     | transform_user | kibana_system | transform_admin |
     | transport_client | remote_monitoring_collector | superuser |
-    | ingest_admin | | |
+    | ingest_admin | 

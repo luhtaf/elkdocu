@@ -8,9 +8,10 @@ nav:
         - Logstash: 'logstash.md'
         - Kibana: 'kibana.md'
     - Operasi: 
-        - Konfigurasi Elasticsearch: 'conf_elastic.md'
-        - Konfigurasi Logstash: 'conf_logstash.md'
-        - Konfigurasi Kibana: 'conf_kibana.md'
+        - Query Elasticsearch: 'query.md'
+        - Konfigurasi Xpack Elasticsearch: 'conf_elastic.md'
+        - Konfigurasi Xpack Kibana: 'conf_kibana.md'
+        - Konfigurasi Pipeline Logstash: 'conf_logstash.md'
         - Instalasi Filebeat: 'filebeat.md'
         - Analisis Log 1: 'log1.md'
         - Analisis Log 2: 'log2.md'
