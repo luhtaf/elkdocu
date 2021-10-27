@@ -2,7 +2,7 @@
 Selanjutnya masih akan digunakan Dev Tools untuk melakukan query lanjutan
 
 ## Basic Query
-Basic Query di elasticsearch menggunakan command `_search` seperti yang sudah dibahas pada [Query 1](../query). Query ini adalah query dasar dari elastticsearch.
+Basic Query di elasticsearch menggunakan command `_search` seperti yang sudah dibahas pada [CRUD](../crud). Query ini adalah query dasar dari elastticsearch.
 
     GET data-restaurant/_search?q=Mission
 
@@ -76,7 +76,7 @@ jika kita menggunakan parameter lanjutan dari fuzzy ini yaitu
     "query": {
         "fuzzy": {
         "name": {
-            "value": "Big Gri",
+            "value": "Big Gril",
             "fuzziness": "AUTO",
             "max_expansions": 50,
             "prefix_length": 0,
@@ -100,3 +100,50 @@ Aggregations di elasticsearch sendiri dibagi menjadi 3 kategori:
 * `metric` aggregations yang menghitung ukuran dari dokumen, seperti jumlah dan rata-rata nilai dari suatu fields.
 * `bucket` aggregations yang mengkelompokkan dokumen menjadi sebuah bucket / kelompok.
 * `pipeline` aggregations yang menerima inputan dari aggregations lainnya.
+
+Disini akan dijelaskan hanya 2 teknik aggregations dasar, yaitu terms bucket aggregation dan metric aggregations (avg,min,max,sum). Untuk mempelajaari aggregations lebih lanjut dapat dilihat dari [link berikut](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html)
+
+Pertama adalah terms bucket aggregations yang akan mengelompokkan data berdasarkan keyword dari suatu field, yang dapat dilihat dengan menggunakan command
+
+    GET data-commerce/_search
+    {
+    "aggs": {
+        "my-agg-name": {
+        "terms": {
+            "field": "material"  }
+        }
+    }
+    }
+
+kedua adalah metric aggregations yang akan menghitung nilai rata-rata. Aggregations ini hanya menerima field berjenis angka.
+
+    GET data-commerce/_search
+    {
+    "size":10,
+    "aggs": {
+        "my-agg-name": {
+        "min": {
+            "field": "price"  }
+        }
+    }
+    }
+
+
+Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pada contoh dibawah, aggregations hanya dilakukan data yang field `price` yang di rentan 0-7.
+
+    GET data-commerce/_search
+    {
+    "size":0,
+    "query": {
+        "range": {
+        "price": {
+            "gte": 0,
+            "lt": 7
+        }}},
+    "aggs": {
+        "my-agg-name": {
+        "terms": {
+            "field": "material"}
+        }
+    }
+    }

@@ -118,3 +118,4 @@ Data yang akan diupload dapat di download melalui [drive](https://drive.bssn.go.
 | --- | --- |
 | data-user.json | data-user |
 | data-restaurant.json | data-restaurant |
+| data-commerce.json | data-commerce |
