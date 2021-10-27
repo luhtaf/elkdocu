@@ -8,6 +8,7 @@ nav:
         - Logstash: 'logstash.md'
         - Kibana: 'kibana.md'
     - Operasi: 
+        - CRUD: 'crud.md'
         - Query Elasticsearch: 'query.md'
         - Konfigurasi Xpack Elasticsearch: 'conf_elastic.md'
         - Konfigurasi Xpack Kibana: 'conf_kibana.md'

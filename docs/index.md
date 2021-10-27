@@ -11,8 +11,9 @@ Sesi kali ini adalah sesi instalasi Elasticsearch, Logstash, Kibana dan konfigur
 
 
 # Goals
-Berhasil Menginstall
+Berhasil Menginstall dan menjalankan
 
 * [Elasticsearch](./elasticsearch)
 * [Logstash](./logstash)
 * [Kibana](./kibana)
+* [Filebeat](/filebeat)
