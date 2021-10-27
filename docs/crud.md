@@ -1,5 +1,5 @@
-# Query Elasticsearch
-Elasticsearch sebagai database sudah memiliki API untuk mengakses datanya. Selain itu, Elasticsearch juga memiliki berbagai query yang disediakan. Pada bagian ini akan di simulasikan dan diujicoba beberapa query yang ada di elasticsearch, silahkan gunakan `Dev Tool` seperti pada gambar.
+# CRUD Elasticsearch
+Elasticsearch sebagai database sudah memiliki API untuk mengakses database. API ini bisa digunakan untuk Create, Read, Update dan Delete seperti database pada umumnya, silahkan gunakan `Dev Tool` seperti pada gambar.
 ![Dev tools](https://drive.bssn.go.id/apps/files_sharing/publicpreview/Pc73kGpLY3C7WEq?fileId=2213238&file=/dev_tools.png&x=1536&y=864&a=true)
 
 ## Istilah
