@@ -129,7 +129,7 @@ kedua adalah metric aggregations yang akan menghitung nilai rata-rata. Aggregati
     }
 
 
-Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pada contoh dibawah, aggregations hanya dilakukan data yang field `price` yang di rentan 0-7.
+Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pada contoh dibawah, aggregations hanya dilakukan data yang field `price` yang di rentang 3-7.
 
     GET data-commerce/_search
     {
@@ -137,7 +137,7 @@ Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pa
     "query": {
         "range": {
         "price": {
-            "gte": 0,
+            "gte": 3,
             "lt": 7
         }}},
     "aggs": {
