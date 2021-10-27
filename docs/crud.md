@@ -48,6 +48,13 @@ untuk memasukkan banyak data sekaligus, digunakan perintah
     {"index": {"_index": "data-dummy", "_type": "_doc"}}
     {"name":"san","age":16}
 
+kemudian, untuk mencegah adanya data yang saling ditimpa dengan id yang sama, kita bisa menggunakan perintah
+
+    PUT data-dummy/_create/id1
+    {
+    "name": "Aqua",
+    "gender": "cwk"
+    }
 
 ## Read
 Untuk membaca data gunakan perintah `_search` dengan method GET
