@@ -87,4 +87,16 @@ jika kita menggunakan parameter lanjutan dari fuzzy ini yaitu
     }
     }
 
-## Aggregate
+## Aggregations
+Aggregations di elasticsearch ini memiliki fungsi merangkum beberapa kondisi index pada elasticsearch seperti metric, statictic, dan analytic lainnya. Jika Elasticsearch dimanfaatkan sebagai database dalam suatu instansi pendidikan, fungsi agregasinya kita bisa mencari tahu :
+
+* siapa user yang paling berprestasi ? 
+* berapa jumlah peserta yang memiliki suatu nilai tertentu ?
+* berapa nilai rata-rata peserta ?
+
+
+Aggregations di elasticsearch sendiri dibagi menjadi 3 kategori:
+
+* `metric` aggregations yang menghitung ukuran dari dokumen, seperti jumlah dan rata-rata nilai dari suatu fields.
+* `bucket` aggregations yang mengkelompokkan dokumen menjadi sebuah bucket / kelompok.
+* `pipeline` aggregations yang menerima inputan dari aggregations lainnya.

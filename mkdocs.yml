@@ -1,4 +1,4 @@
-site_name: Tahapan Instalasi ELK
+site_name: ELK
 
 nav:
     - Home: 'index.md'
