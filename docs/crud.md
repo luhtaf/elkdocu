@@ -15,14 +15,14 @@ Perintah untuk melihat semua indeks yang tersedia
 
     GET _cat/indices
 
-
 > jalankan perintah untuk melihat indeks yang ada di elasticsearch anda
-
 
 ## Membuat Index
 Untuk membuat index pada elasticsearch menggunakan method PUT seperti berikut
 
     PUT data
+
+> Buatlah sebuah indeks untuk personil ST16
 
 ## Create
 Untuk menambahkan data pada elasticsearch digunakan method POST seperti berikut
@@ -34,7 +34,9 @@ Untuk menambahkan data pada elasticsearch digunakan method POST seperti berikut
         "age":18
     }
 
-pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah
+> Buatlah 5 dokumen dengan random generate id
+
+pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `POST` maupun `PUT`
 
     POST data-dummy/_doc/id1{
         "name":"Cornellia",
@@ -43,6 +45,8 @@ pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikk
         "age":29,
         "job":"teacher"
     }
+
+> Buatlah 5 dokumen masing-masing dengan method `POST` dan `PUT` dengan id yang ditentukan. Temukan perbedaannya
 
 untuk memasukkan banyak data sekaligus, digunakan perintah
 
