@@ -15,12 +15,14 @@ Perintah untuk melihat semua indeks yang tersedia
 
     GET _cat/indices
 
+> jalankan perintah untuk melihat indeks yang ada di elasticsearch anda
 
 ## Membuat Index
 Untuk membuat index pada elasticsearch menggunakan method PUT seperti berikut
 
     PUT data
 
+> Buatlah sebuah indeks untuk personil ST16
 
 ## Create
 Untuk menambahkan data pada elasticsearch digunakan method POST seperti berikut
@@ -40,6 +42,7 @@ atau
         "age": "26"
     }
 
+> Buatlah 5 dokumen random generate id, dengan field nama, umur dan kelas
 
 pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `POST` maupun `PUT`
 
@@ -51,6 +54,8 @@ pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikk
         "job":"teacher"
     }
 
+> Buatlah 5 dokumen masing-masing dengan method `POST` dan `PUT` dengan id yang ditentukan. Temukan perbedaannya
+> Bila ada error, apa pesannya?
 
 untuk memasukkan banyak data sekaligus, digunakan perintah
 
@@ -60,6 +65,7 @@ untuk memasukkan banyak data sekaligus, digunakan perintah
     {"index": {"_index": "data-dummy", "_type": "_doc"}}
     {"name":"san","age":16}
 
+> buatlah sebuah kumpulan dokumen menggunakan bulk API
 
 ## Read
 Untuk membaca data gunakan perintah `_search` dengan method GET
@@ -83,6 +89,10 @@ Kita juga bisa menspesifikkan dokumen yang akan kita cari dengan id
 
     GET data-dummy/_doc/id1
 
+> Lakukan search pada elasticsearch anda
+> apa hasil yang dapat diambil?
+> apa perbedaan masing-masing search?
+> [hint](https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html) 
 
 ## Update
 Untuk mengupdate data, digunakan method POST dengan parameter `_update` seperti berikut untuk mengubah suatu field tertentu pada sebuah dokumen
@@ -100,6 +110,8 @@ Jika ingin mengubah lebih banyak field pada suatu dokumen dapat digunakan perint
         }
     }
 
+> Lakukan update pada satu buah dokumen
+> apa perbedaan yang muncul dari ke-2 command diatas?
 
 ## Delete
 Kita dapat menghapus data pada suatu indeks dengan perintah
@@ -110,6 +122,8 @@ atau kita juga bisa menghapus satu indeks dengan perintah
 
     DELETE data-dummy
 
+> Lakukan perintah delete diatas 
+> apa perbedaan yang muncul dari ke-2 command diatas?
 
 ## Import Json
 Pada sesi ini kita kana memasukkan data secara manual kedalam elasticsearch melalui kibana, pertama buka tab `Home` di side menu kibana, kemudian buka menu `Add your data`, setelah membuka halaman baru, pilih tab `Upload file`, kemudian upload file yang akan di upload.
@@ -126,3 +140,5 @@ Data yang akan diupload dapat di download melalui [drive](https://drive.bssn.go.
 | data-commerce.json | data-commerce |
 
 
+> Lakukan import diatas
+> ada berapa jumlah data total yang diimport?

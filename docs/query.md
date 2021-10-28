@@ -7,6 +7,7 @@ Basic Query di elasticsearch menggunakan command `_search` seperti yang sudah di
     GET data-*/_search?q=Mission
 
 
+> ada berapa jumlah data yang dihasilkan dari query di atas?
 
 
 selain itu, kita bisa menspesifikkan field yang akan di query dengan menggunaka command dibawah.
@@ -48,6 +49,17 @@ Bisa juga dilakukan query terhadap suatu range pada field tertentu
     }
 
 
+> lakukan query pada `data-user`, `data-restaurant`, `data-commerce`
+> pada data-restaurant:
+> - berapa jumlah data dengan query `Culvers` pada field description? 
+> - berapa restotan yang memasak makanan itali? 
+> - berapa restoran yang tutup di hari senin? 
+> pada data-commerce
+> - berapa jumlah barang yang dijual dengan harga lebih dari 60?
+> - berapa jumlah barang yang dijual dengan harga kurang dari 10? 
+> - berapa jumlah barang yang dijual dengan rentang harga 10-70? 
+
+> hint: lihat auto complete dan [referensi](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html)
 
 ## Term Query
 Term Query di elasticsearch melakukan query hanya pada nilai yang tepat
@@ -72,6 +84,8 @@ Term Query di elasticsearch melakukan query hanya pada nilai yang tepat
     }
     }
 
+> Berapa jumlah data dari masing-masing contoh di atas? 
+> ada berapa restoran dengan tipe `Bakery`? 
 
 ## Fuzzy Query
 Fuzzy Query melakukan query tidak hanya pada nilai yang di query tapi juga mengquery nilai yang mirip
@@ -105,6 +119,7 @@ jika kita menggunakan parameter lanjutan dari fuzzy ini yaitu
     }
     }
 
+> Apa hasil fuzzy dari command diatas? - BC Grill
 
 ## Aggregations
 Aggregations di elasticsearch ini memiliki fungsi merangkum beberapa kondisi index pada elasticsearch seperti metric, statictic, dan analytic lainnya. Jika Elasticsearch dimanfaatkan sebagai database dalam suatu instansi pendidikan, fungsi agregasinya kita bisa mencari tahu :
@@ -168,3 +183,6 @@ Selain itu, kita bisa mengatur aggregations berdasarkan range tertentu. Misal pa
     }
     }
 
+
+> Jelaskan hasil aggregations dari contoh pertama?
+> apa saja hasil statistik yang termasuk pada contoh ke-2?
