@@ -1,6 +1,6 @@
 site_name: ELK
 theme:
-    name: readthedocs
+    name: material
 nav:
     - Home: 'index.md'
     - Pendahuluan: 'pendahuluan.md'
