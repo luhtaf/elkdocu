@@ -1,0 +1,9 @@
+2021-10-28 14:51:23,131 [ALWAYS] mongo_connector.connector:50 - Starting mongo-connector version: 3.1.1
+2021-10-28 14:51:23,132 [ALWAYS] mongo_connector.connector:50 - Python version: 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 22:45:29) [MSC v.1916 32 bit (Intel)]
+2021-10-28 14:51:23,134 [ALWAYS] mongo_connector.connector:50 - Platform: Windows-10-10.0.19041-SP0
+2021-10-28 14:51:23,134 [ALWAYS] mongo_connector.connector:50 - pymongo version: 3.10.1
+2021-10-28 14:51:23,134 [WARNING] mongo_connector.connector:105 - No doc managers specified, using simulator.
+2021-10-28 14:51:23,229 [WARNING] mongo_connector.connector:170 - MongoConnector: Can't find C:\Users\Lenovo\Documents\Programming\Python\rdt\mkd\oplog.timestamp, attempting to create an empty progress log
+2021-10-28 14:51:23,310 [ALWAYS] mongo_connector.connector:50 - Source MongoDB version: 4.2.3
+2021-10-28 14:51:23,310 [ALWAYS] mongo_connector.connector:50 - Target DocManager: mongo_connector.doc_managers.doc_manager_simulator version: 3.1.1
+2021-10-28 14:51:23,315 [ERROR] mongo_connector.connector:381 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
