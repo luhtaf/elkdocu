@@ -1,37 +1,36 @@
-# Kibana
-Pada pelatihan kali ini, akan digunakan kibana versi 7.15.1 pada sistem operasi Ubuntu 18.04. Goalsnya adalah dapat mengakses dashboard kibana melalui website host.
+# filebeat
+Pada pelatihan kali ini, akan digunakan filebeat versi 7.15.1 pada sistem operasi Ubuntu 18.04. Goalsnya adalah dapat mengakses dashboard filebeat melalui website host.
 
 ## Linux
-Untuk mendownload kibana, ketikkan command:
+Untuk mendownload filebeat, ketikkan command:
     
-    wget https://artifacts.elastic.co/downloads/kibana/kibana-7.15.1-amd64.deb
+    wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.15.1-amd64.deb
 
 Setelah mendownload elasticsearch, dapat dilakukan command berikut untuk menginstall elasticsearch:
 
-    sudo dpkg -i kibana-7.15.1-amd64.deb
+    sudo dpkg -i filebeat-7.15.1-amd64.deb
 
-Kemudian, untuk membuat kibana otomatis dijalankan meskipun server setelah direstart, gunakan command:
+Kemudian, untuk membuat filebeat otomatis dijalankan meskipun server setelah direstart, gunakan command:
 
-    sudo systemctl enable kibana
+    sudo systemctl enable filebeat
 
-Perintah berikut ini untuk mengecek status apakah kibana berjalan atau tidak.
+Perintah berikut ini untuk mengecek status apakah filebeat berjalan atau tidak.
     
-    sudo systemctl status kibana
+    sudo systemctl status filebeat
 
-Dan jalankan perintah berikut untuk menjalankan service kibana.
+Dan jalankan perintah berikut untuk menjalankan service filebeat.
 
     sudo systemctl start filebeat
 
-(Optional) Perintah berikut digunakan untuk menghentikan service kibana.
+(Optional) Perintah berikut digunakan untuk menghentikan service filebeat.
 
     sudo systemctl stop filebeat
 
 
 ## Windows
-Setelah mendownload dan menginstall kibana, perlu dilakukan beberapa konfigurasi tambahan Untuk bisa mengakses kibana melalui browser host. Konfigurasi dilakukan dengan mengubah command pada file `/etc/kibana/kibana.yml` dari
+Untuk Filebeat di windows bisa di download [di sini](https://www.elastic.co/downloads/beats/filebeat), lakukan instalasi seperti biasa
 
-    #server.host: "localhost"
 
-diubah menjadi
+## Konfigurasi
 
-    server.host: "0.0.0.0"
+Konfigurasi filebeat bisa ditemukan di folder instalasi filebeat, pada `filebeat.yml`
