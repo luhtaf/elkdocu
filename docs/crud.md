@@ -45,7 +45,7 @@ atau
 
 > Buatlah 5 dokumen random generate id, dengan field nama, umur dan kelas
 
-pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `_create` maupun `_doc_`
+pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `_create` maupun `_doc`
 
     POST data-dummy/_doc/id1
     {
