@@ -45,7 +45,7 @@ atau
 
 > Buatlah 5 dokumen random generate id, dengan field nama, umur dan kelas
 
-pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `POST` maupun `PUT`
+pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `_create` maupun `_doc_`
 
     POST data-dummy/_doc/id1
     {
@@ -56,7 +56,7 @@ pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikk
         "job":"teacher"
     }
 
-> Buatlah 5 dokumen masing-masing dengan method `POST` dan `PUT` dengan id yang ditentukan. Temukan perbedaannya
+> Buatlah 5 dokumen masing-masing dengan method `_doc_` dan `_create_` dengan id yang ditentukan. Temukan perbedaannya
 > Bila ada error, apa pesannya?
 
 untuk memasukkan banyak data sekaligus, digunakan perintah
