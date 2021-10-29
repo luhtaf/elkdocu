@@ -34,3 +34,24 @@ Untuk Filebeat di windows bisa di download [di sini](https://www.elastic.co/down
 ## Konfigurasi
 
 Konfigurasi filebeat bisa ditemukan di folder instalasi filebeat, pada `filebeat.yml`
+
+* `windows`: C:/Program Files/Filebeat
+* `ubuntu`: /etc/filebeat/
+
+
+
+        filebeat.inputs:
+        - type: log
+        enabled: true
+        paths:
+            - /var/log/suricata/eve.json
+        fields:
+            source: "suricata"
+        filebeat.config.modules:
+        path: ${path.config}/modules.d/*.yml
+        reload.enabled: true
+        setup.template.settings:
+        index.number_of_shards: 1
+        output.logstash:
+        hosts: ["192.168.38.3:5044"]
+

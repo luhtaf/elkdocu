@@ -27,7 +27,8 @@ Untuk membuat index pada elasticsearch menggunakan method PUT seperti berikut
 ## Create
 Untuk menambahkan data pada elasticsearch digunakan method POST seperti berikut
 
-    POST data/_doc{
+    POST data/_doc
+    {
         "name":"thul",
         "title":"Mr",
         "active":true,
@@ -46,7 +47,8 @@ atau
 
 pada contoh diatas, parameter `_id` di generate otomatis. Kita bisa menspesifikkan `_id` yang aka di generate dengan perintah `POST` maupun `PUT`
 
-    POST data-dummy/_doc/id1{
+    POST data-dummy/_doc/id1
+    {
         "name":"Cornellia",
         "title":"Mrs",
         "active":false,
@@ -97,13 +99,15 @@ Kita juga bisa menspesifikkan dokumen yang akan kita cari dengan id
 ## Update
 Untuk mengupdate data, digunakan method POST dengan parameter `_update` seperti berikut untuk mengubah suatu field tertentu pada sebuah dokumen
 
-    POST data-dummy/_update/id1{
+    POST data-dummy/_update/id1
+    {
         "script" : "ctx._source.name = 'Cornellia2'"
-        }
+    }
 
 Jika ingin mengubah lebih banyak field pada suatu dokumen dapat digunakan perintah
 
-    POST data-dummy/_update/id1{
+    POST data-dummy/_update/id1
+    {
         "doc": {
             "name": "Connel",
             "degree": "Magister"
