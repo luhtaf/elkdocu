@@ -119,7 +119,7 @@ jika kita menggunakan parameter lanjutan dari fuzzy ini yaitu
     }
     }
 
-> Apa hasil fuzzy dari command diatas? - BC Grill
+> Apa hasil fuzzy dari command diatas? 
 
 ## Aggregations
 Aggregations di elasticsearch ini memiliki fungsi merangkum beberapa kondisi index pada elasticsearch seperti metric, statictic, dan analytic lainnya. Jika Elasticsearch dimanfaatkan sebagai database dalam suatu instansi pendidikan, fungsi agregasinya kita bisa mencari tahu :
