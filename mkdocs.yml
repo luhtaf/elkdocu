@@ -13,9 +13,9 @@ nav:
         - Query Elasticsearch: 'query.md'
         - Konfigurasi Xpack Elasticsearch: 'conf_elastic.md'
         - Konfigurasi Xpack Kibana: 'conf_kibana.md'
-        - Konfigurasi Pipeline Logstash: 'conf_logstash.md'
         - Instalasi Filebeat: 'filebeat.md'
-        - Analisis Log 1: 'log1.md'
+        - Konfigurasi Pipeline Logstash: 'conf_logstash.md'
+        - Parsing Log: 'conf_log.md'
         - Analisis Log 2: 'log2.md'
     - Pengayaan:
         - Mengakses Elasticsearch: 'rich_elastic.md'
