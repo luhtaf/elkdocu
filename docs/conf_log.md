@@ -21,9 +21,9 @@ pada filebeat di module `suricata.yml` dapat diisi dengan command
         # Filebeat will choose the paths depending on your OS.
         var.paths: ["/home/ubuntu/eve.json"]
         input:
-        fields_under_root: false
-        fields.app.type: "Suricata"
-        fields.site: 1
+            fields_under_root: false
+            fields.app.type: "Suricata"
+            fields.site: 1
 
 kemudian di pipeline logstash pada file `beats.conf` kita tidak perlu mengatur banyak hal untuk suricata karena sudah diberikan banyak konfigurasi dasar pada modul suricata nya. jadi kita hanya perlu mengatur konfigurasi `output`nya seperti berikut:
 
@@ -64,9 +64,9 @@ pada filebeat di module `apache.yml` dapat diisi dengan command
         # Filebeat will choose the paths depending on your OS.
         var.paths: ["/home/ubuntu/access.log"]
         input:
-        fields_under_root: false
-        fields.app.type: "Apache"
-        fields.site: 2
+            fields_under_root: false
+            fields.app.type: "Apache"
+            fields.site: 2
 
     # Error logs
     error:
@@ -175,7 +175,7 @@ kemudian, kita harus mengubah beberapa file konfigurasi pada `filebeat.yml` sepe
 
     fields:
         app:
-        type: "mgnx"
+            type: "mgnx"
         site: 8
 
 
