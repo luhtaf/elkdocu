@@ -183,16 +183,24 @@ kemudian, kita harus mengubah beberapa file konfigurasi pada `filebeat.yml` sepe
 
 kemudian di pipeline logstash pada file `beats.conf` kita tidak perlu mengatur waktu pada filternya seperti berikut:
 
+
     filter
     {
-        if[fields][app][type] == "mgnx"
+
+    if[fields][app][type] == "mgnx"
+    {
+        json
         {
-            date
-            {
-                match => ["Recent Occurrence", "yyyy-MM-dd HH:mm:ss"]
-            }
+            source => "message"
+        }
+        date
+        {
+            match => ["Recent Occurrence", "yyyy-MM-dd HH:mm:ss"]
         }
     }
+
+    }
+
 
 
 
