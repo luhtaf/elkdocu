@@ -16,7 +16,7 @@ nav:
         - Instalasi Filebeat: 'filebeat.md'
         - Konfigurasi Pipeline Logstash: 'conf_logstash.md'
         - Parsing Log: 'conf_log.md'
-        - Analisis Log 2: 'log2.md'
+        - Visualisasi Kibana: 'visualisasi.md'
     - Pengayaan:
         - Mengakses Elasticsearch: 'rich_elastic.md'
         - Elasticsearch Sebagai Secondary Database: 'secondary_db.md'

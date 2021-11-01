@@ -1,0 +1,2 @@
+# Visualisasi Kibana
+Setelah kita memasukkan data kedalam elasticsearch, langkah selanjutnya yang akan kita lakukan adalah membuat desain dashboard pada kibana. Untuk melakukan hal ini, kita dapat membuka bagian dashboard. Misal pada 
