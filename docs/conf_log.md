@@ -108,7 +108,7 @@ pada filebeat di module `system.yml` dapat diisi dengan command
 
     - module: system
     # Syslog
-    syslog:
+      syslog:
         enabled: true
 
         # Set custom paths for the log files. If left empty,
@@ -119,7 +119,7 @@ pada filebeat di module `system.yml` dapat diisi dengan command
             fields.app.type: "System"
 
     # Authorization logs
-    auth:
+      auth:
         enabled: true
 
         # Set custom paths for the log files. If left empty,
