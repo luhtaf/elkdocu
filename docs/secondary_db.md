@@ -5,10 +5,10 @@ Oleh karena itu, biasanya elasticsearch ini dijadikan sebagai **secondary databa
 
 Cara kerjanya adalah dengan ketika kita menyimpan data ke mysql, secara bersamaan data tersebut akan di sinkronkan (data pada mysql disalin) ke elasticsearch juga. Kekurangan dari pemanfaatan secondary database ini adalah kita memerlukan penyimpanan yang lebih besar (2x lipat) karena data disimpan di mysql dan elasticsearch secara bersamaan. 
 
-Salah satu cara yang dapat digunakan untuk melakukan sinkronisasi tersebut adalah dengan menggunakan tools jdbc yang akan kita bahas.
+Salah satu cara yang dapat digunakan untuk melakukan sinkronisasi tersebut adalah dengan menggunakan tools Java Database Connectivity (JDBC) yang akan kita bahas.
 
-## Instalasi JDBC
-Untuk mendownload JDBC, kita bisa mendownloadnya dengan menggunakan command:
+## Instalasi JDBC untuk mysql
+Pertama-tama kita memerlukan driver jdbc untuk mysql. Untuk mendownload JDBC, kita bisa mendownloadnya dengan menggunakan command:
     
     wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.15.1-amd64.deb
 
