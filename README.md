@@ -1,1 +1,1 @@
-hasil dokumentasi dapat diakses pada https://elkdocu.readthedocs.io/en/latest/
+hasil dokumentasi dapat diakses [disini](https://elkdocu.readthedocs.io/en/latest/)
